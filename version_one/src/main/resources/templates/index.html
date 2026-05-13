@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Premiere version de ma page</title>
+</head>
+<body>
+    <h1>Bienvenue sur ma page Spring Boot !</h1>
+    <h3 th:text="${message}">Message par défaut</h3>
+
+    <a th:href="@{/MaGallerie}">Voir la gallerie</a>
+</body>
+</html>
