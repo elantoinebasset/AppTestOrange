@@ -8,6 +8,13 @@
   <artifactId>version_one</artifactId>
   <version>1</version>
 
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.1.4</version>
+    <relativePath/>
+  </parent>
+
   <name>version_one</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
@@ -19,6 +26,27 @@
   </properties>
 
   <dependencies>
+
+<!-- Thymeleaf : pour les templates HTML -->
+<dependency>
+    <groupId>jakarta.persistence</groupId>
+    <artifactId>jakarta.persistence-api</artifactId>
+    <version>3.1.0</version> <!-- ou une autre version récente -->
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
+
+
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
