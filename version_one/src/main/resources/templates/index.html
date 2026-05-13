@@ -2,11 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Premiere version de ma page</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
     <h1>Bienvenue sur ma page Spring Boot !</h1>
     <h3 th:text="${message}">Message par défaut</h3>
 
-    <a th:href="@{/MaGallerie}">Voir la gallerie</a>
+    <div class="containerButton">
+    <a th:href="@{/MaGallerie}">
+
+        <button>
+        <div>
+            <span>
+            <p>Voir la Gallerie</p>
+            </span>
+        </div>
+        <div>
+            <span>
+            <p>C'est parti</p><p>:D</p>
+            </span>
+        </div>
+        </button>
+
+    </a>
+    </div>
 </body>
 </html>

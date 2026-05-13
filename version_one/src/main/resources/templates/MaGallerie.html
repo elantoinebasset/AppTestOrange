@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magallerie</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
     <h1>Ma Gallerie</h1>
+    <div class="containerImages"></div>
     <img th:src="@{/Pictures/télécharger.jpg}" alt="Gallerie">
+
+<hr>
+    <div class="containerButton">
+    <a th:href="@{/}">
+
+        <button>
+        <div>
+            <span>
+            <p>Retour vers l'accueil</p>
+            </span>
+        </div>
+        <div>
+            <span>
+            <p>C'est parti</p><p>:D</p>
+            </span>
+        </div>
+        </button>
 </body>
 </html>
