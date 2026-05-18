@@ -16,6 +16,10 @@ nav {
     padding: 1em;
     position: relative;
 }
+.buttonLinks {
+    display: flex;
+    gap: 1em;
+}
 
 .burger {
     display: flex;
@@ -86,7 +90,7 @@ h3 {
 
 .containerButton {
     display: flex;
-    justify-content: center;
+    justify-content: right;
 }
 
 button {
