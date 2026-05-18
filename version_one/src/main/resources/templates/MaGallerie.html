@@ -5,10 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magallerie</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/javascript/javascript.js}"></script>
 </head>
 <body>
-    <h1>Ma Gallerie</h1>
-    <div class="containerImages"></div>
+
+        <nav>
+        <div class="burger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="menu" id="menu">
+            <li><a th:href="@{/}">Accueil</a></li>
+            <li><a th:href="@{/MaGallerie}">Galerie</a></li>
+        </ul>
+    </nav>
+
+        <div class="containerMain">
+            <h1>Bienvenue sur ma page Spring Boot !</h1>
+            <h3 th:text="${message}">Message par défaut</h3>
+            <h1>Ma Gallerie</h1>
+        <div class="containerImages"></div>
     <img th:src="@{/Pictures/télécharger.jpg}" alt="Gallerie">
 
 <hr>
@@ -27,5 +44,6 @@
             </span>
         </div>
         </button>
+
 </body>
 </html>
