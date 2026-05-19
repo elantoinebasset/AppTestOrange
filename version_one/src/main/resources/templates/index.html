@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Premiere version de ma page</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/javascript/javascript.js}"></script>
+</head>
+<body>
+
+    <nav>
+        <div class="burger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="menu" id="menu">
+            <li><a th:href="@{/}">Accueil</a></li>
+            <li><a th:href="@{/MaGallerie}">Galerie</a></li>
+        </ul>
+    </nav>
+
+    <div class="containerMain">
+        <h1>Bienvenue sur ma page Spring Boot !</h1>
+        <h3 th:text="${message}">Message par défaut</h3>
+
+        <div class="containerButton">
+            <button onclick="window.location.href='/MaGallerie'">
+                <div>
+                    <span>
+                        <p>Voir la Galerie</p>
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        <p>C'est parti !</p><p>:D</p>
+                    </span>
+                </div>
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>
