@@ -21,9 +21,16 @@ nav {
     gap: 1em;
 }
 
+.BurgerContainer{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
 .burger {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 5px;
     cursor: pointer;
     width: fit-content;
@@ -148,4 +155,9 @@ button p {
 
 button:active {
     transform: scale(0.95);
+}
+
+.AccountIcons{
+    display: grid;
+    justify-content: end;
 }

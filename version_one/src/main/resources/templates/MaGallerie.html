@@ -20,15 +20,18 @@
     <ul class="cdpn-mobile-menu__list ra-list">
       <li>
         <a href="#0" class="js-cdpn-mobile-menu__link uia-control ra-link">
-          <span class="uia-control__group"  onclick="window.location.href='/index'">Home</span>
+          <span class="uia-control__group"  onclick="window.location.href='/'">Home</span>
         </a>
       </li>
       <li>
 
     <div class="containerAddPhoto">
-        <label for="inputPhoto" class="buttonAddPhoto">
+        <label th:if="${account.loggedIn}" for="inputPhoto" class="buttonAddPhoto">
             <span class="uia-control__group"> Ajouter ma photo</span>
             <input class="SelectFileCase" type="file" id="inputPhoto" accept="image/*" onchange="addPhoto(event)">
+        </label>
+        <label class="buttonAddPhoto" th:if="${!account.loggedIn}">
+            <span class="uia-control__group" onclick="window.location.href='/Account'"> Veuillez vous connecter pour ajouter une photo</span>
         </label>
     </div>
         <a href="#0" class="js-cdpn-mobile-menu__link uia-control ra-link">

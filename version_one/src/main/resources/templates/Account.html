@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Compte</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/Account.css}">
+</head>
+<body>
+    <button onclick="window.location.href='/'"> back</button>
+<div class="account-container">
+    <div th:if="${account.loggedIn}">
+    <h1>Mon Compte</h1>
+        <div th:if="${successMessage}" class="success-message" th:text="${successMessage}"></div>
+        <div class="current-info">
+            <p><strong>Utilisateur actuel:</strong> <span th:text="${account.username}">-</span></p>
+            <p><strong>Email actuel:</strong> <span th:text="${account.email}">-</span></p>
+            <p><strong>Statut de connexion:</strong> <span th:text="${account.loggedIn}">-</span></p>
+        </div>
+    <form action="/logout" method="post">
+        <button th:if="${account.loggedIn}" type="submit" class="submit-btn">Se déconnecter</button>
+    </form>
+    </div>
+
+
+    <form action="/LogToAccount" method="post" class="FormForAccount"  >
+        <div th:if="${!account.loggedIn}" class="form-group">
+            <label for="username">Nom d'utilisateur:</label>
+            <input required type="text" id="username" name="username" th:value="${account.username}" placeholder="Entrez votre nom d'utilisateur">
+        </div>
+        <div th:if="${!account.loggedIn}" class="form-group">
+            <label for="email">Email:</label>
+            <input required type="email" id="email" name="email" th:value="${account.email}" placeholder="Entrez votre email">
+            <div th:if="${!account.loggedIn}" class="form-group">
+            <label for="password">Mot de passe:</label>
+            <input type="password" name="password" required /><br/>
+            </div>
+        </div>
+            <div th:if="${errorMessage}" th:text="${errorMessage}" style="color:red;"></div>
+            <div th:if="${successMessage}" th:text="${successMessage}" style="color:green;"></div>
+            <button th:if="${!account.loggedIn}" type="submit" class="submit-btn">Se connecter</button>
+        </form>
+                <form action="/CreateAccount" method="post">
+            <button th:if="${!account.loggedIn}" class="submit-btn">Créer un compte</button>
+        </form>
+</div>
+</body>
+</html>

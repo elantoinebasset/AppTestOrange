@@ -7,17 +7,36 @@
 </head>
 <body>
 
-    <nav>
+    <nav class="BurgerContainer">
         <div class="burger" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
         </div>
         <ul class="menu" id="menu">
-            <li><a th:href="@{/}">Accueil</a></li>
             <li><a th:href="@{/MaGallerie}">Galerie</a></li>
+            <li><a th:href="@{/Account}">Compte</a></li>
+
         </ul>
+    <div class="AccountIcons">
+        <div class="containerButton">
+            <button onclick="window.location.href='/Account'">
+                <div>
+                    <span>
+                        <p>Accéder à mon compte</p>
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        <p>C'est parti !</p><p>:D</p>
+                    </span>
+                </div>
+            </button>
+        </div>
+        </div>
     </nav>
+
+
 
     <div class="containerMain">
         <h1>Bienvenue sur ma page Spring Boot !</h1>
@@ -37,6 +56,8 @@
                 </div>
             </button>
         </div>
+
+
     </div>
 
 </body>

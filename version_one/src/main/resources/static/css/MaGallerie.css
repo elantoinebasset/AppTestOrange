@@ -233,7 +233,7 @@ MENU STYLES
   opacity: 0;
 
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   z-index: 2;
 }
 

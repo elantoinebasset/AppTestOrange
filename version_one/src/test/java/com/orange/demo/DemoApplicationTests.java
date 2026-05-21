@@ -1,7 +1,6 @@
 package com.orange.demo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
@@ -51,11 +50,26 @@ class DemoApplicationTests {
         assertEquals("Ceci est la gallerie !", model.getAttribute("message"));
     }
 
+    // Test de la page Account
     @Test
-    void testindexpage(){
+    void testAccountPageView() {
         Model model = new ExtendedModelMap();
-        homeController.monindex(model);
-        assertEquals("Ceci est un message pour valider l'envoie", model.getAttribute("messageindex"));
-        assertNotNull(model.getAttribute("messageindex"),"");
+        String view = homeController.account(model);
+
+        // On vérifie que la vue retournée est bien "Account"
+        assertEquals("Account", view);
+    }
+
+    // Test que le compte est bien initialisé
+    @Test
+    void testAccountInitialization() {
+        Model model = new ExtendedModelMap();
+        homeController.account(model);
+
+        // On vérifie que le compte est présent dans le model
+        Account account = (Account) model.getAttribute("account");
+        assertEquals("Utilisateur", account.getUsername());
+        assertEquals("user@example.com", account.getEmail());
+        assertEquals(false, account.toString().contains("loggedIn=true"));
     }
 }
