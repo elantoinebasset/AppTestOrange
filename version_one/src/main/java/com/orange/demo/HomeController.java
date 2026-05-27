@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import jakarta.servlet.http.HttpSession;
+
 
 
 @Controller
@@ -34,10 +36,19 @@ public class HomeController {
     }
 
     @GetMapping("/Account")
-    public String account(Model model) {
-        model.addAttribute("account", currentAccount);
+    public String account(HttpSession session, Model model) {
+
+        Account account = (Account) session.getAttribute("currentAccount");
+
+        if (account == null) {
+            System.out.println("No account in session, creating new account.");
+            account = new Account();
+        }
+
+        model.addAttribute("account", account);
         return "Account";
     }
+
 
     @PostMapping("/Account")
     public String updateAccount(
@@ -99,26 +110,37 @@ public class HomeController {
             @RequestParam(value = "username", required = false) String username,
             @RequestParam(value = "email", required = false) String email,
             @RequestParam(value = "password", required = false) String password,
+            HttpSession session,
             RedirectAttributes redirectAttributes) {
-        if (username != null && password != null && email != null &&
-            username.equals(currentAccount.getUsername()) &&
-            email.equals(currentAccount.getEmail()) &&
-            password.equals(currentAccount.getPassword())) {
-            currentAccount.setLoggedIn(true);
+
+        // On cherche l'utilisateur EN BASE et non en mémoire
+        Account account = accountRepository.findByEmail(username);
+
+        if (account != null &&
+            account.getEmail().equals(email) &&
+            account.getPassword().equals(password)) {
+
+            // On stocke le compte trouvé en base dans la session
+            session.setAttribute("currentAccount", account);
             redirectAttributes.addFlashAttribute("successMessage", "Connecté avec succès!");
         } else {
-            redirectAttributes.addFlashAttribute("errorMessage", "Nom d'utilisateur, email ou mot de passe incorrect !");
+            redirectAttributes.addFlashAttribute("errorMessage", "Identifiants incorrects !");
         }
 
-                return "redirect:/Account";
+        return "redirect:/Account";
     }
+
 
 
     // Déconnexion
     @PostMapping("/logout")
-    public String logout(RedirectAttributes redirectAttributes) {
-        currentAccount.setLoggedIn(false);
+    public String logout(HttpSession session, RedirectAttributes redirectAttributes) {
+
+        // On détruit la session
+        session.invalidate();
+
         redirectAttributes.addFlashAttribute("successMessage", "Déconnecté avec succès!");
         return "redirect:/Account";
     }
+
 }
