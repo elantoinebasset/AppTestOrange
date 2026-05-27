@@ -1,16 +1,27 @@
 package com.orange.demo;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+@Entity
+@Table(name = "accounts")
 public class Account {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; //colonne clé qui permet à Hibernate de savoir comment identifier chaque ligne de ma table
     private String username;
     private String email;
     private String password;
     private boolean loggedIn;
+    private int whatsNumber;
 
     public Account() {
         this.username = "Utilisateur";
         this.email = "user@example.com";
-        this.password = "password";
+        this.password = "passdedeword";
         this.loggedIn = false;
+        // this.whatsNumber = 1;
     }
 
     public String getUsername() { return username; }
@@ -21,6 +32,9 @@ public class Account {
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password;}
+
+    public int getWhatsNumber() { return whatsNumber; }
+    public void setWhatsNumber(int WhatsNumber) { this.whatsNumber = WhatsNumber;}
 
     public boolean getLoggedIn() { return loggedIn; }
     public void setLoggedIn(boolean loggedIn) { this.loggedIn = loggedIn;
@@ -34,5 +48,7 @@ public class Account {
                         + " | Email: " + email
                         + " | Password: " + password);
     }
+
+
 }
 }
